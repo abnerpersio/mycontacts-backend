@@ -3,12 +3,15 @@ const CategoriesRepository = require('../repositories/CategoriesRepository');
 class CategoryController {
   async index(req, res) {
     const categories = await CategoriesRepository.findAll();
+
     res.json(categories);
   }
 
   async show(req, res) {
     const { id } = req.params;
+
     const category = await CategoriesRepository.findById(id);
+
     res.json(category);
   }
 
@@ -20,11 +23,13 @@ class CategoryController {
     }
 
     const category = await CategoriesRepository.create({ name });
+
     res.json(category);
   }
 
   async update(req, res) {
     const { id } = req.params;
+
     const { name } = req.body;
 
     const categoryExists = await CategoriesRepository.findById(id);
@@ -34,6 +39,7 @@ class CategoryController {
     }
 
     const category = await CategoriesRepository.update(id, { name });
+
     res.json(category);
   }
 
@@ -41,12 +47,19 @@ class CategoryController {
     const { id } = req.params;
 
     await CategoriesRepository.delete(id);
+
     res.sendStatus(204);
   }
 }
 
 /*
+
+
+
  * index, show, store, update, delete
+
+
+
  */
 
 module.exports = new CategoryController();

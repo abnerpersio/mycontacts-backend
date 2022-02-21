@@ -6,7 +6,8 @@
   "author": "Abner Persio",
   "license": "MIT",
   "scripts": {
-    "dev": "nodemon src/index.js"
+    "dev": "nodemon src/index.js",
+    "format": "prettier --write **/*.js"
   },
   "dependencies": {
     "express": "^4.17.1",
@@ -16,7 +17,10 @@
   "devDependencies": {
     "eslint": "^7.26.0",
     "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-config-prettier": "^8.4.0",
     "eslint-plugin-import": "^2.23.1",
-    "nodemon": "^2.0.7"
+    "eslint-plugin-prettier": "^4.0.0",
+    "nodemon": "^2.0.7",
+    "prettier": "^2.5.1"
   }
 }

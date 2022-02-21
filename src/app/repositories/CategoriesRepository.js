@@ -12,7 +12,7 @@ class CategoriesRepository {
       SELECT * FROM categories
       WHERE id = $1
     `,
-      [id]
+      [id],
     );
     return row;
   }
@@ -24,7 +24,7 @@ class CategoriesRepository {
       VALUES($1)
       RETURNING *
     `,
-      [name]
+      [name],
     );
     return row;
   }
@@ -37,15 +37,13 @@ class CategoriesRepository {
       WHERE id = $2
       RETURNING *
     `,
-      [name, id]
+      [name, id],
     );
     return row;
   }
 
   async delete(id) {
-    const deleteOp = await db.query('DELETE FROM categories WHERE id = $1', [
-      id,
-    ]);
+    const deleteOp = await db.query('DELETE FROM categories WHERE id = $1', [id]);
     return deleteOp;
   }
 }

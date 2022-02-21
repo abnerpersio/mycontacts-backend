@@ -20,15 +20,13 @@ class ContactsRespository {
       LEFT JOIN categories ON categories.id = contacts.category_id
       WHERE contacts.id = $1
     `,
-      [id]
+      [id],
     );
     return row;
   }
 
   async findByEmail(email) {
-    const [row] = await db.query('SELECT * FROM contacts WHERE email = $1', [
-      email,
-    ]);
+    const [row] = await db.query('SELECT * FROM contacts WHERE email = $1', [email]);
     return row;
   }
 
@@ -39,7 +37,7 @@ class ContactsRespository {
       VALUES($1, $2, $3, $4)
       RETURNING *
     `,
-      [name, email, phone, category_id]
+      [name, email, phone, category_id],
     );
 
     return row;
@@ -53,7 +51,7 @@ class ContactsRespository {
       WHERE id = $5
       RETURNING *
     `,
-      [name, email, phone, category_id, id]
+      [name, email, phone, category_id, id],
     );
     return row;
   }
