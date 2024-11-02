@@ -1,10 +1,11 @@
-const whitelist = ['http://localhost:3000'];
+const allowedOrigins = ['http://localhost:3000'];
 
 module.exports = (req, res, next) => {
-  const isOriginWhiteListed = whitelist.find((item) => item === req.headers.origin);
+  const { origin } = req.headers;
+  const isAllowed = allowedOrigins.find((item) => item === origin);
 
-  if (isOriginWhiteListed) {
-    res.setHeader('Access-Control-Allow-Origin', req.headers.origin);
+  if (isAllowed) {
+    res.setHeader('Access-Control-Allow-Origin', origin);
     res.setHeader('Access-Control-Allow-Methods', '*');
     res.setHeader('Access-Control-Allow-Headers', '*');
     res.setHeader('Access-Control-Max-Age', '40');
